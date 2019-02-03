@@ -17,7 +17,7 @@ export class EmployeeComponent implements OnInit {
   // maxDate = new Date(2019, 0, 28);
   // maxDate = Date.now();
 
-  countries = [
+  departmentNames = [
     {id:1, value: 'Front End'},
     {id:2, value: 'HR'},
     {id:3, value: 'UX'}

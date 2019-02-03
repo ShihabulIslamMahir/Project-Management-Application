@@ -1,8 +1,7 @@
-<mat-toolbar>
-        
-        <span class="fill-remaining-space"></span>
+<mat-toolbar color= "accent">
+        <span class="fill-remaining-space">Fill this form </span>   
         <button class = "btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex = "-1"><mat-icon>close</mat-icon></button>
-       
+     
     </mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
   <mat-grid-list cols="2" rowHeight="300px">
@@ -16,7 +15,7 @@
                   <mat-error *ngIf="service.form.controls['firstName'].errors?.maxlength">Max 50 characters</mat-error>   
               </mat-form-field>
                   <mat-form-field>
-                      <input formControlName="lastName" matInput placeholder="Designation" >
+                      <input formControlName="designationName" matInput placeholder="Designation" >
                   </mat-form-field>
                 
     </div>
@@ -25,18 +24,18 @@
               <div class="controles-container">
               
                   <mat-form-field>
-                          <mat-select formControlName="country" placeholder="Department*"> 
+                          <mat-select formControlName="departmentName" placeholder="Department*"> 
                               <mat-option>None</mat-option>
-                              <ng-container *ngFor="let country of countries">
-                                  <mat-option value="{{country.value}}">{{country.value}}</mat-option>
+                              <ng-container *ngFor="let departmentName of departmentNames">
+                                  <mat-option value="{{departmentName.value}}">{{departmentName.value}}</mat-option>
                                    
                               </ng-container>
                             
                               </mat-select>
-                              <mat-error *ngIf="service.form.controls['country'].errors?.required">This field is mandatory</mat-error> 
+                              <mat-error *ngIf="service.form.controls['departmentName'].errors?.required">This field is mandatory</mat-error> 
                   </mat-form-field>
                   <mat-form-field>
-                      <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" [max]="maxDate"  placeholder="Joining Date*">
+                      <input formControlName="joiningDate" matInput [matDatepicker]="picker" [max]="maxDate"  placeholder="Joining Date*">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>

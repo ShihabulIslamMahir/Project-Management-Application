@@ -1,13 +1,5 @@
 
-  <!-- <mat-toolbar  class="headingbottompadding" color="primary">
-    <div class="nav-button-row">
-     
-      <button mat-button color="basic" routerLink="/employees">Employees</button>
-      <button mat-button color="basic" routerLink="/projects">Projects</button>
-    </div>
-    
-    </mat-toolbar>
-    <router-outlet></router-outlet>  -->
+ 
     <div [class]="theme">
         <mat-toolbar  class="headingbottompadding" color="primary">
         <div class="nav-button-row">
@@ -15,6 +7,7 @@
             <button mat-button color="basic" routerLink="/projects">Projects</button>
           
         </div>
+        <p class = "app-name">Project Management Application</p>
         <div fxLayout="row" fxLayoutAlign="end center" fxFlex='100'>
           <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>line_weight</mat-icon>

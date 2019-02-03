@@ -1,5 +1,5 @@
 <div class="add-div">
-  <button mat-raised-button (click)="onCreate()"><mat-icon>add</mat-icon>CREATE</button>
+  <button mat-raised-button (click)="onCreate()" color = "primary"><mat-icon>add</mat-icon>CREATE</button>
 </div>
 <mat-form-field class="search-form-field" floatLabel="never">
     <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
@@ -14,18 +14,18 @@
       <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="lastName">
+    <ng-container matColumnDef="designationName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Designation</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.designationName}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="dateOfBirth">
+    <ng-container matColumnDef="joiningDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Joining Date</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.dateOfBirth}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.joiningDate}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="country">
+    <ng-container matColumnDef="departmentName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Department</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.country}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.departmentName}}</mat-cell>
     </ng-container>
    
    
@@ -34,8 +34,8 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
-        <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_outline</mat-icon></button>
+        <button mat-icon-button (click)="onEdit(row)"><mat-icon>person_add</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="onDelete(row.$key)"><mat-icon>delete_forever</mat-icon></button>
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="loading">

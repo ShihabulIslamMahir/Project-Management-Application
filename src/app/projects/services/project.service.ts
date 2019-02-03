@@ -14,20 +14,20 @@ export class ProjectService {
 
   form : FormGroup = new FormGroup({
     $key: new FormControl(null),
-    firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-    lastName: new FormControl('', [Validators.minLength(3), Validators.maxLength(50)]),
-    dateOfBirth: new FormControl('', Validators.required),
-    country: new FormControl('', Validators.required),
+    projectName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+    assignMember: new FormControl('', [Validators.minLength(3), Validators.maxLength(50)]),
+    descriptions: new FormControl('', ),
+    projectType: new FormControl('', Validators.required),
    
   });
 
   initializeFormGroup(){
      this.form.setValue({
     $key: null,
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    country: '',
+    projectName: '',
+    assignMember: '',
+    descriptions: '',
+    projectType: '',
     
   })
   }
@@ -37,10 +37,10 @@ export class ProjectService {
   }
   insertProject(project){
     this.projectList.push({
-    firstName: project.firstName,
-    lastName: project.lastName,
-    dateOfBirth: project.dateOfBirth == "" ? "" : this.datePipe.transform(project.dateOfBirth, 'yyyy-MM-dd'),
-    country: project.country
+    projectName: project.projectName,
+    assignMember: project.assignMember,
+    descriptions: project.descriptions ,
+    projectType: project.projectType
     
 
     });
@@ -48,10 +48,10 @@ export class ProjectService {
   updateProject(project){
     this.projectList.update(project.$key,
       {
-      firstName: project.firstName,
-      lastName: project.lastName,
-      dateOfBirth: project.dateOfBirth == "" ? "" : this.datePipe.transform(project.dateOfBirth, 'yyyy-MM-dd'),
-      country: project.country
+      projectName: project.projectName,
+      assignMember: project.assignMember,
+      descriptions: project.descriptions,
+      projectType: project.projectType
       
 
 
@@ -68,5 +68,6 @@ export class ProjectService {
     this.form.setValue(project);
 
   }
+  
  
 }

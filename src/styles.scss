@@ -9,6 +9,9 @@
     margin: 0px 40px; //top and bottom margin 0px and left and right margin 40px
 }
 
+.app-name{
+    margin-left: 270px; 
+}
 .header{
     background-color: orangered;
     color: azure;
@@ -59,9 +62,10 @@ mat-footer-row mat-footer-cell{
 .search-form-field{
     width: 100%;
     margin-bottom:20px; 
-    padding: 5px 10px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
+    padding: 0px 0px;
+    background-color: #774a4a;
+    color: aliceblue;
+   
     
     }
     .search-form-field div.mat-form-field-underline {
@@ -74,6 +78,6 @@ mat-footer-row mat-footer-cell{
       padding-bottom: 0px;
   }
   .search-form-field div.mat-form-field-suffix button{
-      height: 32px;
-      width: 32px;
+      height: 40px;
+      width: 40px;
   }

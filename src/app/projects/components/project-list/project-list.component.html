@@ -1,5 +1,5 @@
 <div class="add-div">
-  <button mat-raised-button (click)="onCreate()"><mat-icon>add</mat-icon>CREATE</button>
+  <button mat-raised-button (click)="onCreate()" color = "primary"><mat-icon>add</mat-icon>CREATE</button>
 </div>
 <mat-form-field class="search-form-field" floatLabel="never">
     <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
@@ -9,23 +9,23 @@
   </mat-form-field>
 <div class="mat-elevation-z8">
   <mat-table [dataSource]="listData" matSort>
-    <ng-container matColumnDef="firstName">
+    <ng-container matColumnDef="projectName">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Project Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.projectName}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="lastName">
+    <ng-container matColumnDef="assignMember">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Assign members</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.assignMember}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="dateOfBirth">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Joining Date</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.dateOfBirth}}</mat-cell>
+    <ng-container matColumnDef="descriptions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Descriptions</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.descriptions}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="country">
+    <ng-container matColumnDef="projectType">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Project Type</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.country}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.projectType}}</mat-cell>
     </ng-container>
    
    

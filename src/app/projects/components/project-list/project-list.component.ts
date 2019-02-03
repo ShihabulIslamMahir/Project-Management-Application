@@ -14,7 +14,7 @@ export class ProjectListComponent implements OnInit {
   constructor(private service: ProjectService,
     private dialog: MatDialog ) { }
     listData: MatTableDataSource<any>;
-    displayedColumns: string[] = ['firstName','lastName','dateOfBirth','country','actions'];
+    displayedColumns: string[] = ['projectName','assignMember','descriptions','projectType','actions'];
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     searchKey: string;

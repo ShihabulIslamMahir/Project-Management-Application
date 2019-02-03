@@ -1,17 +1,27 @@
-
+<mat-toolbar color= "accent">
+        <span class="fill-remaining-space" color="primary"> Fill this form</span>
+        <button class = "btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex = "-1"><mat-icon>close</mat-icon></button>
+    
+    </mat-toolbar>
 <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
             <mat-grid-tile>
                 <div class="controles-container">
                     <input type="hidden" formControlName="$key">
                     <mat-form-field>
-                        <input formControlName="firstName" matInput placeholder=" Project Name*" >
-                    <mat-error *ngIf="service.form.controls['firstName'].errors?.required">This field is mandatory</mat-error>
-                    <mat-error *ngIf="service.form.controls['firstName'].errors?.minlength">Minimum 3 characters</mat-error> 
-                    <mat-error *ngIf="service.form.controls['firstName'].errors?.maxlength">Max 50 characters</mat-error>   
+                        <input formControlName="projectName" matInput placeholder=" Project Name*" >
+                    <mat-error *ngIf="service.form.controls['projectName'].errors?.required">This field is mandatory</mat-error>
+                    <mat-error *ngIf="service.form.controls['projectName'].errors?.minlength">Minimum 3 characters</mat-error> 
+                    <mat-error *ngIf="service.form.controls['projectName'].errors?.maxlength">Max 50 characters</mat-error>   
                 </mat-form-field>
                     <mat-form-field>
-                        <input formControlName="lastName" matInput placeholder="Assign Members" >
+                        
+                        <input formControlName="assignMember" matInput placeholder="Assign Members" (keydown)="search($event)"[matAutocomplete]="auto" >
+                        <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let employee of employees" [value]="employee.firstName">
+                            <h4>{{employee.firstName}}</h4>
+                        </mat-option>
+                    </mat-autocomplete>
                     </mat-form-field>
                   
       </div>
@@ -20,20 +30,18 @@
                 <div class="controles-container">
                 
                     <mat-form-field>
-                            <mat-select formControlName="country" placeholder="Project type*"> 
+                            <mat-select formControlName="projectType" placeholder="Project type*"> 
                                 <mat-option>None</mat-option>
-                                <ng-container *ngFor="let country of countries">
-                                    <mat-option value="{{country.value}}">{{country.value}}</mat-option>
+                                <ng-container *ngFor="let projectType of projectTypes">
+                                    <mat-option value="{{projectType.value}}">{{projectType.value}}</mat-option>
                                      
                                 </ng-container>
                               
                                 </mat-select>
-                                <mat-error *ngIf="service.form.controls['country'].errors?.required">This field is mandatory</mat-error> 
+                                <mat-error *ngIf="service.form.controls['projectType'].errors?.required">This field is mandatory</mat-error> 
                     </mat-form-field>
                     <mat-form-field>
-                        <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" [max]="maxDate"  placeholder="Joining Date*">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                        <input formControlName="descriptions" matInput   placeholder="Descriptions">
                     </mat-form-field>
                     
   

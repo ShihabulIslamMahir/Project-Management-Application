@@ -14,7 +14,7 @@ export class EmployeeListComponent implements OnInit {
   constructor(private service: EmployeeService,
     private dialog: MatDialog ) { }
     listData: MatTableDataSource<any>;
-    displayedColumns: string[] = ['firstName','lastName','dateOfBirth','country','actions'];
+    displayedColumns: string[] = ['firstName','designationName','joiningDate','departmentName','actions'];
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     searchKey: string;

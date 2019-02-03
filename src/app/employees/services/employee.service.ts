@@ -8,16 +8,16 @@ import * as _ from 'lodash';
   providedIn: 'root'
 })
 export class EmployeeService {
-  constructor(private firebase: AngularFireDatabase, private datePipe: DatePipe) { }
+  constructor(private firebase: AngularFireDatabase, private datePipe: DatePipe,private db: AngularFireDatabase) { }
 
   employeeList: AngularFireList<any>;
 
   form : FormGroup = new FormGroup({
     $key: new FormControl(null),
     firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-    lastName: new FormControl('', [Validators.minLength(3), Validators.maxLength(50)]),
-    dateOfBirth: new FormControl('', Validators.required),
-    country: new FormControl('', Validators.required),
+    designationName: new FormControl('', [Validators.minLength(3), Validators.maxLength(50)]),
+    joiningDate: new FormControl('', Validators.required),
+    departmentName: new FormControl('', Validators.required),
    
   });
 
@@ -25,9 +25,9 @@ export class EmployeeService {
      this.form.setValue({
     $key: null,
     firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    country: '',
+    designationName: '',
+    joiningDate: '',
+    departmentName: '',
     
   })
   }
@@ -38,9 +38,9 @@ export class EmployeeService {
   insertEmployee(employee){
     this.employeeList.push({
     firstName: employee.firstName,
-    lastName: employee.lastName,
-    dateOfBirth: employee.dateOfBirth == "" ? "" : this.datePipe.transform(employee.dateOfBirth, 'yyyy-MM-dd'),
-    country: employee.country
+    designationName: employee.designationName,
+    joiningDate: employee.joiningDate == "" ? "" : this.datePipe.transform(employee.joiningDate, 'yyyy-MM-dd'),
+    departmentName: employee.departmentName
     
 
     });
@@ -49,9 +49,9 @@ export class EmployeeService {
     this.employeeList.update(employee.$key,
       {
       firstName: employee.firstName,
-      lastName: employee.lastName,
-      dateOfBirth: employee.dateOfBirth == "" ? "" : this.datePipe.transform(employee.dateOfBirth, 'yyyy-MM-dd'),
-      country: employee.country
+      designationName: employee.designationName,
+      joiningDate: employee.joiningDate == "" ? "" : this.datePipe.transform(employee.joiningDate, 'yyyy-MM-dd'),
+      departmentName: employee.departmentName
       
 
 
@@ -67,6 +67,12 @@ export class EmployeeService {
   populateForm(employee){
     this.form.setValue(employee);
 
+  }
+  getAssignMembers(start, end): AngularFireList<any> {
+    
+    return this.db.list('/employees', ref => 
+        ref.limitToFirst(5).orderByChild('firstName')
+    );
   }
  
 }
